@@ -1,0 +1,48 @@
+<form [formGroup]="formEnvio">
+  <div class="agregar">
+    <div class="agregar_contenedor" >
+      <select
+        [ngClass]="{ redfocus: tipo === 'egresoOperacion' }"
+        (change)="tipoOperacion($event)"
+        class="agregar_tipo"
+      >
+        <option value="ingresoOperacion" selected>+</option>
+        <option value="egresoOperacion">-</option>
+      </select>
+      <input
+        [ngClass]="{ redfocus: tipo === 'egresoOperacion' }"
+        type="date"
+        class="agregar_fecha"
+        placeholder="Fecha"
+        formControlName="FechaInput"
+        [min]="minDate"
+        [max]="maxDate"
+        required
+      />
+      <input
+        [ngClass]="{ redfocus: tipo === 'egresoOperacion' }"
+        type="text"
+        class="agregar_descripcion"
+        placeholder="Agregar Descripción"
+        formControlName="descripcionInput"
+        required
+      />
+      <input
+        [ngClass]="{ redfocus: tipo === 'egresoOperacion' }"
+        type="text"
+        class="agregar_valor"
+        placeholder="Valor"
+        formControlName="valorInput"
+        required
+        (keydown.enter)="enviarFormulario($event)"
+        appCurrencyInput
+      />
+      <button [ngClass]="{ 'button-disabled': formEnvio.invalid }" [disabled]="formEnvio.invalid" (click)="agregarValor()"  class="agregar_btn">
+        <i
+          [ngClass]="{ red: tipo === 'egresoOperacion' }"
+          class="ion-ios-checkmark-outline"
+        ></i>
+      </button>
+    </div>
+  </div>
+</form>

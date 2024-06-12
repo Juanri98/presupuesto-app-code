@@ -1,0 +1,30 @@
+<div *ngIf="showContent; else contenido">
+  <mat-tab-group (selectedTabChange)="onAnioTabChange($event)">
+    <mat-tab *ngFor="let datosAnio of datosPorAnio; let i = index">
+      <ng-template mat-tab-label> {{ datosAnio.ano }} </ng-template>
+      <mat-tab-group (selectedTabChange)="onMesTabChange($event, i)">
+        <mat-tab *ngFor="let mes of datosAnio.meses; let im = index">
+          <ng-template mat-tab-label>
+            {{ mes.mes }}
+          </ng-template>
+          <app-formulario
+            [idAnio]="datosAnio.idAno"
+            [idMes]="mes.id"
+            [presupuestoTotal]="presupuestoTotal"
+            (loadCabecero)="showDatosOutput($event)"
+          ></app-formulario>
+          <div
+            *ngIf="showDatos; else contenido"
+            class="contenedor limpiarEstilos"
+          >
+            <app-ingreso></app-ingreso>
+            <app-egreso [ingresoTotal]="getIngresoTotal()"></app-egreso>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<ng-template #contenido>
+  <app-loading></app-loading>
+</ng-template>

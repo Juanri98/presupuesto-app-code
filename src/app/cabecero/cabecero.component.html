@@ -1,0 +1,59 @@
+<div [style.backgroundImage]="'url(' + fondoActual + ')'" class="fondo">
+  <div class="cabecero">
+    <div class="presupuesto">
+      <div class="presupuesto_titulo">Presupuesto Disponible:</div>
+
+      <div class="presupuesto_valor">
+        {{ presupuestoTotal | currency : "COP" : "$" : "1.2-2" }}
+      </div>
+
+      <div class="presupuesto_ingreso limpiarEstilos">
+        <div class="presupuesto_ingreso--texto">Ingresos</div>
+        <div class="right">
+          <div class="presupuesto_ingreso--valor">
+            {{ ingresoTotal | currency : "COP" : "$" : "1.2-2" }}
+          </div>
+          <div class="presupuesto_ingreso--porcentaje">&nbsp;</div>
+        </div>
+      </div>
+
+      <div class="presupuesto_egreso limpiarEstilos">
+        <div class="presupuesto_egreso--text">Egresos</div>
+        <div class="right limpiarEstilos">
+          <div class="presupuesto_egreso--valor">
+            - {{ egresoTotal | currency : "COP" : "$" : "1.2-2" }}
+          </div>
+          <div class="presupuesto_egreso--porcentaje">
+            {{ porcentajeTotal | percent }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="botones">
+    <button mat-mini-fab (click)="cambiarFondo(-1)" matTooltip="Anterior Fondo">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button mat-mini-fab (click)="cambiarFondo(1)" matTooltip="Siguiente Fondo">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+  </div>
+
+  <div class="botones2">
+    <button
+      mat-mini-fab
+      (click)="eliminarDato()"
+      matTooltip="Eliminar el último Año"
+    >
+      <mat-icon>remove</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      (click)="agregarNuevoDato()"
+      style="margin-right: 0.5rem"
+      matTooltip="Agregar Año"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

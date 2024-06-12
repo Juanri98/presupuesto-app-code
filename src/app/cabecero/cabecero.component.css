@@ -1,0 +1,31 @@
+.fondo {
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  position: relative;
+}
+
+button {
+  width: 40px;
+  height: 40px;
+  margin-left: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.botones {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+}
+
+.botones2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+}
